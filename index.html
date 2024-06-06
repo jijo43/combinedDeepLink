@@ -55,6 +55,11 @@
                 redirectToAppStore(); // Redirect to the app store if sceneName parameter is not provided
             }
         }
+        // Clear browser cache
+    setTimeout(function() {
+        console.log("Clearing browser cache...");
+        window.location.reload(true);
+    }, 2000); // Adjust the delay as necessary
     </script>
 </head>
 <body onload="openApp()">
