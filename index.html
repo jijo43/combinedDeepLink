@@ -18,68 +18,42 @@
             var isiOS = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
 
             function redirectToAppStore() {
+                console.log("Redirecting to app store...");
+                console.log("User Agent:", userAgent);
                 if (isiOS) {
+                    console.log("Opening App Store for iOS...");
                     window.location.href = 'https://apps.apple.com/us/app/keynote/id361285480'; // Replace with your app's App Store URL
                 } else if (isAndroid) {
-                    window.location = 'market://details?id=com.gameloft.android.ANMP.GloftA9HM'; // Replace with your app's Play Store URL
+                    console.log("Opening Google Play Store for Android...");
+                    window.location.href = 'market://details?id=com.gameloft.android.ANMP.GloftA9HM'; // Use market:// URI scheme for Android
                 } else {
+                    console.log("Device not recognized. Redirecting to fallback Play Store URL...");
                     window.location.href = 'https://play.google.com/store/apps/details?id=com.nflystudio.InfiniteStaircase&pcampaignid=merch_published_cluster_promotion_battlestar_browse_all_games&hl=en'; // Replace with your fallback Play Store URL
                 }
             }
 
-            // Function to try opening the app with the deep link
-            function tryOpeningApp() {
-                var maxAttempts = 5; // Set the maximum number of attempts
-                var attempts = 0;
-            
-                function openAppWithDeepLink() {
-                    attempts++;
-                    window.location.href = deepLink;
-            
-                    // Check if the app was opened successfully
-                    setTimeout(function() {
-                        if (!isAppOpened()) {
-                            // If the app is not opened and maximum attempts are reached, redirect to the app store
-                            if (attempts >= maxAttempts) {
-                                redirectToAppStore();
-                            } else {
-                                // Retry opening the app with the deep link
-                                openAppWithDeepLink();
-                            }
-                        }
-                    }, 1500); // Adjust timeout as necessary
-                }
-            
-                // Start attempting to open the app with the deep link
-                openAppWithDeepLink();
-            }
-
             if (sceneName) {
                 if (isiOS || isAndroid) {
-                    // Initial attempt to open the app
-                    tryOpeningApp();
+                    console.log("Attempting to open app with deep link...");
+                    console.log("User Agent:", userAgent);
+                    // Try opening the app with the deep link
+                    window.location.href = deepLink;
+                    setTimeout(function() {
+                        console.log("Checking if app was opened successfully...");
+                        console.log("User Agent:", userAgent);
+                        // If the app is not installed, redirect to the app store
+                        redirectToAppStore();
+                    }, 1500); // Adjust timeout as necessary
                 } else {
+                    console.log("Device not supported. Redirecting to app store...");
+                    console.log("User Agent:", userAgent);
                     redirectToAppStore(); // Redirect to the app store if the device is not supported
                 }
             } else {
+                console.log("Scene name parameter not provided. Redirecting to app store...");
+                console.log("User Agent:", userAgent);
                 redirectToAppStore(); // Redirect to the app store if sceneName parameter is not provided
             }
-        }
-
-        function isAppOpened() {
-             // Check if the current URL has changed after attempting to open the app
-              // This assumes that successfully opening the app would result in a different URL
-              var currentUrl = window.location.href;
-              
-              // Replace this with the URL pattern you expect after opening the app
-              var expectedUrlPattern = 'gatch://tictactoe';
-          
-              // Check if the current URL matches the expected URL pattern
-              if (currentUrl.indexOf(expectedUrlPattern) !== -1) {
-                  return true; // The app was opened successfully
-              } else {
-                  return false; // The app was not opened
-              }
         }
     </script>
 </head>
