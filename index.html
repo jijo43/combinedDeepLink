@@ -8,11 +8,8 @@
         function openApp() {
             var urlParams = new URLSearchParams(window.location.search);
             var path = window.location.pathname; // Get the path part of the URL
-            var pathSegments = path.split('/'); // Split the path by "/"
-            var lastSegment = pathSegments[pathSegments.length - 1]; // Get the last segment after "/"
-            var sceneName = urlParams.get('sceneName');
-           // var playerName = urlParams.get('playerName');
-            //var roomId = urlParams.get('roomId');
+            var queryString = window.location.search; // Get the query string part of the URL
+            var lastSegment = queryString.split('?')[1]; // Get the part after "?"
 
             //var deepLink = 'gatch://tictactoe?ServerConnection#' + playerName + '&' + roomId + '&scene=' + sceneName;
 
@@ -36,10 +33,11 @@
             }
 
            
+               if (lastSegment && lastSegment.length >= 8) {
                 if (isiOS || isAndroid) {
                     console.log("Attempting to open app with deep link...");
                     console.log("User Agent:", userAgent);
-                     var deepLink = 'gatch://tictactoe?ServerConnection#'+lastSegment;
+                    var deepLink = 'gatch://tictactoe?ServerConnection#' + lastSegment;
                     // Try opening the app with the deep link
                     window.location.href = deepLink;
                     setTimeout(function() {
@@ -53,6 +51,10 @@
                     console.log("User Agent:", userAgent);
                     redirectToAppStore(); // Redirect to the app store if the device is not supported
                 }
+            } else {
+                console.log("Last segment is too short or missing. Redirecting to app store...");
+                redirectToAppStore(); // Redirect to the app store if lastSegment is missing or less than 8 characters
+            }
             
         }
         // Clear browser cache
