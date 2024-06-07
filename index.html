@@ -11,10 +11,10 @@
             var pathSegments = path.split('/'); // Split the path by "/"
             var lastSegment = pathSegments[pathSegments.length - 1]; // Get the last segment after "/"
             var sceneName = urlParams.get('sceneName');
-            var playerName = urlParams.get('playerName');
-            var roomId = urlParams.get('roomId');
+           // var playerName = urlParams.get('playerName');
+            //var roomId = urlParams.get('roomId');
 
-            var deepLink = 'gatch://tictactoe?ServerConnection#' + playerName + '&' + roomId + '&scene=' + sceneName;
+            //var deepLink = 'gatch://tictactoe?ServerConnection#' + playerName + '&' + roomId + '&scene=' + sceneName;
 
             var userAgent = navigator.userAgent || navigator.vendor || window.opera;
             var isAndroid = /android/i.test(userAgent);
@@ -39,7 +39,7 @@
                 if (isiOS || isAndroid) {
                     console.log("Attempting to open app with deep link...");
                     console.log("User Agent:", userAgent);
-                     var deepLink = 'gatch://tictactoe?'+lastSegment;
+                     var deepLink = 'gatch://tictactoe?ServerConnection#'+lastSegment;
                     // Try opening the app with the deep link
                     window.location.href = deepLink;
                     setTimeout(function() {
