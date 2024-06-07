@@ -35,7 +35,7 @@
                 }
             }
 
-            if (sceneName) {
+           
                 if (isiOS || isAndroid) {
                     console.log("Attempting to open app with deep link...");
                     console.log("User Agent:", userAgent);
@@ -53,11 +53,7 @@
                     console.log("User Agent:", userAgent);
                     redirectToAppStore(); // Redirect to the app store if the device is not supported
                 }
-            } else {
-                console.log("Scene name parameter not provided. Redirecting to app store...");
-                console.log("User Agent:", userAgent);
-                redirectToAppStore(); // Redirect to the app store if sceneName parameter is not provided
-            }
+            
         }
         // Clear browser cache
     setTimeout(function() {
