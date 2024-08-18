@@ -1,0 +1,7 @@
+{
+    "TicTacToe": {
+      "version": "1.0",
+      "Server_url": "192.168.168.30:8086",
+      "PlayerMatch_url":"192.168.168.30:8085"
+    }
+  }
