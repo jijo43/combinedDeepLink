@@ -1,9 +1,10 @@
 {
     "TicTacToe": {
       "version": "1.1",
-        "min_version":"1.0",
-      "Server_url": "gcloud-1040087096116.asia-south2.run.app",
-      "PlayerMatch_url":"gcloud-1040087096116.asia-south2.run.app",
+        "useSecured":true,
+    "min_version":"1.0",
+      "Server_url": "192.168.249.165:8084",
+      "PlayerMatch_url":"192.168.249.165:8084",
         "app_url":"https://play.google.com/store/apps/details?id=enterprises.dating.boo"
     },
     "Checkers":{
