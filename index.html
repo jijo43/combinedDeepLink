@@ -35,9 +35,14 @@
            
                if (lastSegment && lastSegment.length >= 8) {
                 if (isiOS || isAndroid) {
+                    // Determine which game to open based on conditions or parameters
+                        var gameName = 'tictactoe'; // Default to Tic Tac Toe
+                        if (lastSegment.includes("ludo")) { // Check if we want to open Ludo
+                            gameName = 'ludo';
+                        }
                     console.log("Attempting to open app with deep link...");
                     console.log("User Agent:", userAgent);
-                    var deepLink = 'gatch://tictactoe?ServerConnection#' + lastSegment;
+                    var deepLink = 'gatch://'+gameName+'?ServerConnection#' + lastSegment;
                     // Try opening the app with the deep link
                     window.location.href = deepLink;
                     setTimeout(function() {
