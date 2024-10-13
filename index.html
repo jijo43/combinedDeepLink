@@ -37,7 +37,7 @@
                 if (isiOS || isAndroid) {
                     console.log("Attempting to open app with deep link...");
                     console.log("User Agent:", userAgent);
-                    var deepLink = 'gatch://ludo?ServerConnection#' + lastSegment;
+                    var deepLink = 'gatch://tictactoe?ServerConnection#' + lastSegment;
                     // Try opening the app with the deep link
                     window.location.href = deepLink;
                     setTimeout(function() {
