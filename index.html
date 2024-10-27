@@ -11,7 +11,20 @@
             var queryString = window.location.search; // Get the query string part of the URL
             var lastSegment = queryString.split('?')[1]; // Get the part after "?"
 
-            //var deepLink = 'gatch://tictactoe?ServerConnection#' + playerName + '&' + roomId + '&scene=' + sceneName;
+            // Define a lookup object where the last 3 characters map to game names
+            var gameLookup = {
+                "G01": "tictactoe",
+                "G02": "ludo",
+                "G03": "checkers",
+                "G04": "blackjack"
+                // Add more mappings as needed
+            };
+
+            // Extract the last 3 characters from lastSegment
+            var lastThreeChars = lastSegment.slice(-3); // Get the last 3 characters
+
+            // Determine the game name based on lastThreeChars
+            var gameName = gameLookup[lastThreeChars] || 'tictactoe'; // Default to "tictactoe" if not found
 
             var userAgent = navigator.userAgent || navigator.vendor || window.opera;
             var isAndroid = /android/i.test(userAgent);
@@ -35,11 +48,6 @@
            
                if (lastSegment && lastSegment.length >= 8) {
                 if (isiOS || isAndroid) {
-                    // Determine which game to open based on conditions or parameters
-                        var gameName = 'tictactoe'; // Default to Tic Tac Toe
-                        if (lastSegment.includes("ludo")) { // Check if we want to open Ludo
-                            gameName = 'ludo';
-                        }
                     console.log("Attempting to open app with deep link...");
                     console.log("User Agent:", userAgent);
                     var deepLink = 'gatch://'+gameName+'?ServerConnection#' + lastSegment;
