@@ -19,6 +19,7 @@
                 "G04": "blackjack"
                 // Add more mappings as needed
             };
+            // Use market://details?id= URI scheme for Android 
              var appLookupForPlayStore = {
                 "G01": "market://details?id=com.lutsgames.IdleSuperpowers",
                 "G02": "ludo",
@@ -26,6 +27,7 @@
                 "G04": "blackjack"
                 // Add more mappings as needed
             };
+            // Replace with your app's App Store URL
             var appLookupForAppStore = {
                 "G01": "https://apps.apple.com/us/app/keynote/id361285480",
                 "G02": "ludo",
@@ -33,6 +35,7 @@
                 "G04": "blackjack"
                 // Add more mappings as needed
             };
+            // Replace with your fallback Play Store URL
             var appLookupForWindows = {
                 "G01": "https://play.google.com/store/apps/details?id=com.lutsgames.IdleSuperpowers",
                 "G02": "ludo",
@@ -56,13 +59,13 @@
                 console.log("User Agent:", userAgent);
                 if (isiOS) {
                     console.log("Opening App Store for iOS...");
-                    window.location.href = appLookupForAppStore[lastThreeChars]; //'https://apps.apple.com/us/app/keynote/id361285480'; // Replace with your app's App Store URL
+                    window.location.href = appLookupForAppStore[lastThreeChars];
                 } else if (isAndroid) {
                     console.log("Opening Google Play Store for Android...");
-                    window.location.href = appLookupForPlayStore[lastThreeChars]; //'market://details?id=com.bandainamcoent.dblegends_ww'; // Use market:// URI scheme for Android 
+                    window.location.href = appLookupForPlayStore[lastThreeChars];  
                 } else {
                     console.log("Device not recognized. Redirecting to fallback Play Store URL...");
-                    window.location.href = appLookupForWindows[lastThreeChars];  //'https://play.google.com/store/apps/details?id=com.nflystudio.InfiniteStaircase&pcampaignid=merch_published_cluster_promotion_battlestar_browse_all_games&hl=en'; // Replace with your fallback Play Store URL
+                    window.location.href = appLookupForWindows[lastThreeChars];  
                 }
             }
 
