@@ -67,7 +67,7 @@
             }
 
            
-               if (lastSegment && lastSegment.length >= 8) {
+               if (lastSegment && lastSegment.length >= 8 && lastThreeChars.length == 3) {
                 if (isiOS || isAndroid) {
                     console.log("Attempting to open app with deep link...");
                     console.log("User Agent:", userAgent);
@@ -87,7 +87,7 @@
                 }
             } else {
                 console.log("Last segment is too short or missing. Redirecting to app store...");
-                redirectToAppStore(); // Redirect to the app store if lastSegment is missing or less than 8 characters
+                //redirectToAppStore(); // Redirect to the app store if lastSegment is missing or less than 8 characters
             }
             
         }
