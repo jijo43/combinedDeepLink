@@ -47,7 +47,9 @@
             // Extract the last 3 characters from lastSegment
             if(lastSegment.length>=2){
                 
-            var lastThreeChars = lastSegment.slice(-3); // Get the last 3 characters
+                var lastThreeChars = lastSegment.slice(-3); // Get the last 3 characters
+                     // Determine the game name based on lastThreeChars
+                var gameName = gameLookup[lastThreeChars] || 'tictactoe'; // Default to "tictactoe" if not found
             }
             // Determine the game name based on lastThreeChars
             var gameName = gameLookup[lastThreeChars] || 'tictactoe'; // Default to "tictactoe" if not found
