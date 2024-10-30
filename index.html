@@ -61,13 +61,13 @@
                 console.log("User Agent:", userAgent);
                 if (isiOS) {
                     console.log("Opening App Store for iOS...");
-                    window.location.href = appLookupForAppStore[lastThreeChars];
+                    window.location.href = appLookupForAppStore[lastThreeChars] || "https://renxo.tech/";
                 } else if (isAndroid) {
                     console.log("Opening Google Play Store for Android...");
-                    window.location.href = appLookupForPlayStore[lastThreeChars];  
+                    window.location.href = appLookupForPlayStore[lastThreeChars] || "https://renxo.tech/";  
                 } else {
                     console.log("Device not recognized. Redirecting to fallback Play Store URL...");
-                    window.location.href = appLookupForWindows[lastThreeChars];  
+                    window.location.href = appLookupForWindows[lastThreeChars] || "https://renxo.tech/";  
                 }
             }
 
@@ -92,7 +92,7 @@
                 }
             } else {
                 console.log("Last segment is too short or missing. Redirecting to app store...");
-                //redirectToAppStore(); // Redirect to the app store if lastSegment is missing or less than 8 characters
+                redirectToAppStore(); // Redirect to the app store if lastSegment is missing or less than 8 characters
             }
             
         }
