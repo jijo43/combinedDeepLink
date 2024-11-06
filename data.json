@@ -17,7 +17,7 @@
     },
     "Blackjack": {
       "version": "1.0",
-        "useSecured":true,
+        "useSecured":false,
     "min_version":"1.0",
       "Server_url": "192.168.0.103:8084",
       "PlayerMatch_url":"192.168.0.103:8084",
